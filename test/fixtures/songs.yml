@@ -1,13 +1,71 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  duration: 1
-  composer: MyString
+album1song1:
+  title: album1song1
+  duration: 190
+  composer: comp1
+  language: jp
   release_date: 2023-04-14
 
-two:
-  title: MyString
-  duration: 1
-  composer: MyString
+album1song2:
+  title: album1song2
+  duration: 250
+  composer: comp1
+  language: jp
+  release_date: 2023-04-14
+
+album2song1:
+  title: album2song1
+  duration: 512
+  composer: comp2
+  language: en
+  release_date: 2023-04-14
+
+album2song2:
+  title: album2song2
+  duration: 80
+  composer: comp2
+  language: en
+  release_date: 2023-04-14
+
+singlesong:
+  title: singlesong
+  duration: 194
+  composer: comp3
+  language: zh
+  release_date: 2023-04-14
+
+epsong1:
+  title: epsong1
+  duration: 222
+  composer: comp1
+  language: en
+  release_date: 2023-04-14
+
+epsong2:
+  title: epsong2
+  duration: 210
+  composer: comp4
+  language: en
+  release_date: 2023-04-14
+
+compilationsong1:
+  title: compilationsong1
+  duration: 190
+  composer: comp2
+  language: id
+  release_date: 2023-04-14
+
+compilationsong2:
+  title: compilationsong2
+  duration: 95
+  composer: comp2
+  language: id
+  release_date: 2023-04-14
+
+compilationsong3:
+  title: compilationsong3
+  duration: 110
+  composer: comp4
+  language: id
   release_date: 2023-04-14

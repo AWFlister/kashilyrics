@@ -1,11 +1,33 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  user: one
-  bookmarkable_id: 1
-  bookmarkable_type: MyString
+bm1:
+  user: user1
+  bookmarkable: album1song1 (Song)
 
-two:
-  user: two
-  bookmarkable_id: 1
-  bookmarkable_type: MyString
+bm2:
+  user: user1
+  bookmarkable: album1song1lyric1 (Lyric)
+
+bm2:
+  user: user3
+  bookmarkable: album1song2 (Song)
+
+bm2:
+  user: user4
+  bookmarkable: compilationsong2 (Song)
+
+bm2:
+  user: user4
+  bookmarkable: album2song2lyric1 (Lyric)
+
+bm2:
+  user: user4
+  bookmarkable: album2song2lyric2 (Lyric)
+
+bm2:
+  user: user5
+  bookmarkable: singlesong (Song)
+
+bm2:
+  user: user5
+  bookmarkable: singlesonglyric1 (Lyric)

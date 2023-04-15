@@ -1,13 +1,33 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  biography: MyText
-  country: MyString
-  url: MyString
+artist1:
+  name: artist1
+  biography: Biography of artist1
+  albums: album1, album2
+  songs: album1song1, album1song2, album2song1
+  country: Japan
+  url: www.artist1.com
 
-two:
-  name: MyString
-  biography: MyText
-  country: MyString
-  url: MyString
+artist2:
+  name: artist2
+  biography: Biography of artist2
+  albums: album2
+  songs: album2song1, album2song2, compilationsong2
+  country: United Kingdom
+  url: www.artist2.com
+
+artist3:
+  name: artist3
+  biography: Biography of artist3
+  albums: single, ep
+  songs: singlesong, epsong1, epsong2, compilationsong3
+  country: Indonesia
+  url: www.artist3.com
+
+artist4:
+  name: artist4
+  biography: Biography of artist4
+  albums: compilation
+  songs: compilationsong1, compilationsong3
+  country: Japan
+  url: www.artist4.com

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_15_041738) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_15_051929) do
   create_table "albums", force: :cascade do |t|
     t.string "title"
     t.string "album_type"
@@ -29,12 +29,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_15_041738) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "artists_songs", id: false, force: :cascade do |t|
+    t.integer "artist_id", null: false
+    t.integer "song_id", null: false
+    t.index ["artist_id", "song_id"], name: "index_artists_songs_on_artist_id_and_song_id"
+    t.index ["song_id", "artist_id"], name: "index_artists_songs_on_song_id_and_artist_id"
+  end
+
   create_table "bookmarks", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "bookmarkable_id"
-    t.string "bookmarkable_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "bookmarkable_type"
+    t.integer "bookmarkable_id"
+    t.index ["bookmarkable_type", "bookmarkable_id"], name: "index_bookmarks_on_bookmarkable"
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 

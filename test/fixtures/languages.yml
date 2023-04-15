@@ -1,9 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  lang_code: MyString
-  lang_name: MyString
+jp:
+  lang_code: JP
+  lang_name: Japanese
 
-two:
-  lang_code: MyString
-  lang_name: MyString
+en:
+  lang_code: EN
+  lang_name: English
+
+id:
+  lang_code: ID
+  lang_name: Indonesian
+
+zh:
+  lang_code: ZH
+  lang_name: Chinese

@@ -1,13 +1,36 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  album_type: MyString
-  release_date: 2023-04-14
-  label: MyString
+album1:
+  title: Album_1
+  album_type: album
+  songs: album1song1, album1song2
+  release_date: 2020-02-10
+  label: lebaL Musix
 
-two:
+album2:
+  title: Honor the Hero
+  album_type: album
+  songs: album2song1, album2song2
+  release_date: 2013-01-27
+  label: Label Sounds Entertainment
+
+single:
   title: MyString
   album_type: MyString
-  release_date: 2023-04-14
-  label: MyString
+  songs: singlesong
+  release_date: 2020-02-10
+  label: Label Sounds Entertainment
+
+ep:
+  title: Extended Plays
+  album_type: ep
+  songs: epsong1, epsong2
+  release_date: 2021-12-04
+  label: Label Records
+
+compilation:
+  title: Compilations
+  album_type: compilation
+  songs: compilationsong1, compilationsong2, compilationsong3
+  release_date: 2019-05-02
+  label: Label Records
