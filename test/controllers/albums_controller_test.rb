@@ -2,7 +2,7 @@ require "test_helper"
 
 class AlbumsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @album = albums(:one)
+    @album = albums(:album1)
   end
 
   test "should get index" do

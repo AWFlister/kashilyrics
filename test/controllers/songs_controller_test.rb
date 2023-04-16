@@ -2,7 +2,10 @@ require "test_helper"
 
 class SongsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @song = songs(:one)
+    @song = songs(:album1song1)
+    @language = languages(:en)
+    @artist = artists(:artist4)
+    @album = @artist.albums.first
   end
 
   test "should get index" do
@@ -12,7 +15,13 @@ class SongsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create song" do
     assert_difference("Song.count") do
-      post songs_url, params: { song: { composer: @song.composer, duration: @song.duration, release_date: @song.release_date, title: @song.title } }, as: :json
+      post songs_url, params: { artist_id: @artist.id,
+                                album_id: @album.id,
+                                song: { composer: @song.composer, 
+                                        duration: @song.duration,
+                                        language_id: @language.id,
+                                        release_date: @song.release_date, 
+                                        title: @song.title } }, as: :json
     end
 
     assert_response :created

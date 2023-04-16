@@ -15,13 +15,18 @@ class SongsController < ApplicationController
 
   # POST /songs
   def create
-    @song = Song.new(song_params)
-
+    @song = Song.new(song_params.except :artist_id, :album_id)
+    @song.artists << Artist.find(params[:artist_id])
+    @song.albums << Album.find(params[:album_id])
     if @song.save
-      render json: @song, status: :created, location: @song
+      song = @song.as_json
+      song[:artist_ids] = @song.artists.map {|a| a.id}
+      song[:album_ids] = @song.albums.map {|a| a.id}
+      render json: song, status: :created, location: @song
     else
       render json: @song.errors, status: :unprocessable_entity
     end
+    
   end
 
   # PATCH/PUT /songs/1
@@ -46,6 +51,6 @@ class SongsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def song_params
-      params.require(:song).permit(:title, :duration, :composer, :release_date)
+      params.require(:song).permit(:title, :duration, :composer, :release_date, :language_id)
     end
 end
