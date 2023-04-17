@@ -1,33 +1,33 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-bm1:
+bm11:
   user: user1
   bookmarkable: album1song1 (Song)
 
-bm2:
+bm12:
   user: user1
   bookmarkable: album1song1lyric1 (Lyric)
 
-bm2:
+bm31:
   user: user3
   bookmarkable: album1song2 (Song)
 
-bm2:
+bm41:
   user: user4
   bookmarkable: compilationsong2 (Song)
 
-bm2:
+bm42:
   user: user4
   bookmarkable: album2song2lyric1 (Lyric)
 
-bm2:
+bm43:
   user: user4
   bookmarkable: album2song2lyric2 (Lyric)
 
-bm2:
+bm51:
   user: user5
   bookmarkable: singlesong (Song)
 
-bm2:
+bm52:
   user: user5
   bookmarkable: singlesonglyric1 (Lyric)
