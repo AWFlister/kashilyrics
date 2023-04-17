@@ -2,7 +2,7 @@ require "test_helper"
 
 class LyricsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @lyric = lyrics(:one)
+    @lyric = lyrics(:album1song1lyric1)
   end
 
   test "should get index" do

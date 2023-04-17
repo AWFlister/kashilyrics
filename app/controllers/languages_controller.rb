@@ -26,7 +26,9 @@ class LanguagesController < ApplicationController
 
   # PATCH/PUT /languages/1
   def update
-    if @language.update(language_params)
+    if @language.lang_code == "ZZ"
+      render json: {}, status: :forbidden      
+    elsif @language.update(language_params)
       render json: @language
     else
       render json: @language.errors, status: :unprocessable_entity
@@ -35,7 +37,19 @@ class LanguagesController < ApplicationController
 
   # DELETE /languages/1
   def destroy
-    @language.destroy
+    if @language.lang_code == "ZZ"
+      render json: {}, status: :forbidden
+    else
+      songs = Song.where language: @language
+      lyrics = Lyric.where language: @language
+
+      zz = Language.find_by lang_code: "ZZ"
+      (songs + lyrics).each do |s|
+        s.language = zz
+        s.save
+      end
+      @language.destroy
+    end
   end
 
   private

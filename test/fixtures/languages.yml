@@ -15,3 +15,11 @@ id:
 zh:
   lang_code: ZH
   lang_name: Chinese
+
+xx:
+  lang_code: XX
+  lang_name: Instrumental
+
+zz:
+  lang_code: ZZ
+  lang_name: Unknown
