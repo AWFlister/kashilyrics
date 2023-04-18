@@ -15,8 +15,8 @@ class AlbumsController < ApplicationController
 
   # POST /albums
   def create
-    artists = params[:artist_ids].map {|id| Artist.find id}
-    songs = params[:song_ids].map {|id| Song.find id}
+    artists = params[:artist_ids].map {|id| Artist.find_by id: id}
+    songs = params[:song_ids].map {|id| Song.find_by id: id}
     @album = Album.new album_params
     @album.artists += artists
     @album.songs += songs
@@ -30,9 +30,9 @@ class AlbumsController < ApplicationController
 
   # PATCH/PUT /albums/1
   def update
-    @album.artists += params[:artist_ids].map {|id| Artist.find id}
+    @album.artists += params[:artist_ids].map {|id| Artist.find_by id: id}
     @album.artists = @album.artists.uniq
-    @album.songs += params[:song_ids].map {|id| Song.find id}
+    @album.songs += params[:song_ids].map {|id| Song.find_by id: id}
     @album.songs = @album.songs.uniq
 
     if @album.update album_params

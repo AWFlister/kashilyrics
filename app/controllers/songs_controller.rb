@@ -16,8 +16,8 @@ class SongsController < ApplicationController
   # POST /songs
   def create
     @song = Song.new song_params
-    @song.artists << Artist.find params[:artist_id]
-    @song.albums << Album.find params[:album_id]
+    @song.artists << Artist.find_by id: params[:artist_id]
+    @song.albums << Album.find_by id: params[:album_id]
     if @song.save
       song = @song.as_json
       song[:artist_ids] = @song.artists.map {|a| a.id}
