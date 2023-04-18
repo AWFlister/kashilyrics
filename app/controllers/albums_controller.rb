@@ -15,8 +15,12 @@ class AlbumsController < ApplicationController
 
   # POST /albums
   def create
-    @album = Album.new(album_params)
-
+    artists = params[:artist_ids].map {|id| Artist.find id}
+    songs = params[:song_ids].map {|id| Song.find id}
+    @album = Album.new album_params
+    @album.artists += artists
+    @album.songs += songs
+    
     if @album.save
       render json: @album, status: :created, location: @album
     else
@@ -26,7 +30,12 @@ class AlbumsController < ApplicationController
 
   # PATCH/PUT /albums/1
   def update
-    if @album.update(album_params)
+    @album.artists += params[:artist_ids].map {|id| Artist.find id}
+    @album.artists = @album.artists.uniq
+    @album.songs += params[:song_ids].map {|id| Song.find id}
+    @album.songs = @album.songs.uniq
+
+    if @album.update album_params
       render json: @album
     else
       render json: @album.errors, status: :unprocessable_entity

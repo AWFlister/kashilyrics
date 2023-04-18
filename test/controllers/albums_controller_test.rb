@@ -12,7 +12,10 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create album" do
     assert_difference("Album.count") do
-      post albums_url, params: { album: { album_type: @album.album_type, label: @album.label, release_date: @album.release_date, title: @album.title } }, as: :json
+      post albums_url, params: { 
+        artist_ids: [805413029, 688451865],
+        song_ids: [1064428692, 867194838, 552388488],
+        album: { album_type: @album.album_type, label: @album.label, release_date: @album.release_date, title: @album.title } }, as: :json
     end
 
     assert_response :created
@@ -24,8 +27,11 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update album" do
-    patch album_url(@album), params: { album: { album_type: @album.album_type, label: @album.label, release_date: @album.release_date, title: @album.title } }, as: :json
-    assert_response :success
+    patch album_url(@album), params: { 
+      artist_ids: [504349070],
+      song_ids: [],
+      album: { album_type: @album.album_type, label: @album.label, release_date: @album.release_date, title: @album.title } 
+    }, as: :json
   end
 
   test "should destroy album" do

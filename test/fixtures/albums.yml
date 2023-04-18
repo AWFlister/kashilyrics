@@ -16,7 +16,7 @@ album2:
 
 single:
   title: MyString
-  album_type: MyString
+  album_type: single
   songs: singlesong
   release_date: 2020-02-10
   label: Label Sounds Entertainment
