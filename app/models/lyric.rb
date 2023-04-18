@@ -1,5 +1,5 @@
 class Lyric < ApplicationRecord
   belongs_to :song
   belongs_to :language
-  has_many :bookmarks, as: :bookmarkable
+  has_many :bookmarks, as: :bookmarkable, dependent: :destroy
 end
