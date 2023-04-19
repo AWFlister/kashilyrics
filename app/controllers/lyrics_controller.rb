@@ -3,7 +3,7 @@ class LyricsController < ApplicationController
 
   # GET /lyrics
   def index
-    @lyrics = Lyric.all
+    @lyrics = params[:song_id].blank? ? Lyric.all : Lyric.where(song_id: params[:song_id])
 
     render json: @lyrics
   end
