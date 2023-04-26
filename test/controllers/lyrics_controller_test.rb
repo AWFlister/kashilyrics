@@ -11,6 +11,7 @@ class LyricsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create lyric" do
+    login
     assert_difference("Lyric.count") do
       post lyrics_url, params: { lyric: { language_id: @lyric.language_id, lyric_text: @lyric.lyric_text, song_id: @lyric.song_id } }, as: :json
     end
@@ -24,11 +25,13 @@ class LyricsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update lyric" do
+    login
     patch lyric_url(@lyric), params: { lyric: { language_id: @lyric.language_id, lyric_text: @lyric.lyric_text, song_id: @lyric.song_id } }, as: :json
     assert_response :success
   end
 
   test "should destroy lyric" do
+    login
     assert_difference("Lyric.count", -1) do
       delete lyric_url(@lyric), as: :json
     end

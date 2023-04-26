@@ -1,5 +1,6 @@
 class BookmarksController < ApplicationController
   before_action :set_bookmark, only: %i[ show update destroy ]
+  before_action :require_login, only: %i[ create update destroy ]
 
   # GET /bookmarks
   def index

@@ -11,6 +11,7 @@ class BookmarksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create bookmark" do
+    login
     assert_difference("Bookmark.count") do
       post bookmarks_url, params: { bookmark: { bookmarkable_id: @bookmark.bookmarkable_id, bookmarkable_type: @bookmark.bookmarkable_type, user_id: @bookmark.user_id } }, as: :json
     end
@@ -24,11 +25,13 @@ class BookmarksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update bookmark" do
+    login
     patch bookmark_url(@bookmark), params: { bookmark: { bookmarkable_id: @bookmark.bookmarkable_id, bookmarkable_type: @bookmark.bookmarkable_type, user_id: @bookmark.user_id } }, as: :json
     assert_response :success
   end
 
   test "should destroy bookmark" do
+    login
     assert_difference("Bookmark.count", -1) do
       delete bookmark_url(@bookmark), as: :json
     end

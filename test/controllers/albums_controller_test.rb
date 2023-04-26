@@ -10,12 +10,24 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should fail album creation if not logged in" do
+    post albums_url, params: { 
+      artist_ids: [805413029, 688451865],
+      song_ids: [1064428692, 867194838, 552388488],
+      album: { album_type: @album.album_type, label: @album.label, release_date: @album.release_date, title: @album.title } 
+    }, as: :json
+    
+    assert_response :forbidden
+  end
+
   test "should create album" do
+    login
     assert_difference("Album.count") do
       post albums_url, params: { 
         artist_ids: [805413029, 688451865],
         song_ids: [1064428692, 867194838, 552388488],
-        album: { album_type: @album.album_type, label: @album.label, release_date: @album.release_date, title: @album.title } }, as: :json
+        album: { album_type: @album.album_type, label: @album.label, release_date: @album.release_date, title: @album.title } 
+      }, as: :json
     end
 
     assert_response :created
@@ -27,6 +39,8 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update album" do
+    login
+
     patch album_url(@album), params: { 
       artist_ids: [504349070],
       song_ids: [],
@@ -35,6 +49,8 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy album" do
+    login
+
     assert_difference("Album.count", -1) do
       delete album_url(@album), as: :json
     end

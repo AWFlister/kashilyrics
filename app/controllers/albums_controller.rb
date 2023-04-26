@@ -1,5 +1,6 @@
 class AlbumsController < ApplicationController
   before_action :set_album, only: %i[ show update destroy ]
+  before_action :require_login, only: %i[ create update destroy ]
 
   # GET /albums
   def index

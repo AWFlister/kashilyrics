@@ -12,6 +12,7 @@ class LanguagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create language" do
+    login
     assert_difference("Language.count") do
       post languages_url, params: { language: { lang_code: @language.lang_code, lang_name: @language.lang_name } }, as: :json
     end
@@ -25,11 +26,13 @@ class LanguagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update language" do
+    login
     patch language_url(@language), params: { language: { lang_code: @language.lang_code, lang_name: @language.lang_name } }, as: :json
     assert_response :success
   end
 
   test "shouldn't update ZZ language" do
+    login
     patch language_url(@lang_zz), params: { language: { lang_code: "??", lang_name: "????" } }, as: :json
     assert_response :forbidden
     get language_url(@lang_zz), as: :json
@@ -37,6 +40,7 @@ class LanguagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy language" do
+    login
     assert_difference("Language.count", -1) do
       delete language_url(@language), as: :json
     end
@@ -45,6 +49,7 @@ class LanguagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "shouldn't destroy ZZ language" do
+    login
     delete language_url(@lang_zz), as: :json
     assert_response :forbidden
     get language_url(@lang_zz), as: :json

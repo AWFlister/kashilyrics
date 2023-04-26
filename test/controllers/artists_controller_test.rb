@@ -11,6 +11,7 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create artist" do
+    login
     assert_difference("Artist.count") do
       post artists_url, params: { artist: { biography: @artist.biography, country: @artist.country, name: @artist.name, url: @artist.url } }, as: :json
     end
@@ -24,11 +25,13 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update artist" do
+    login
     patch artist_url(@artist), params: { artist: { biography: @artist.biography, country: @artist.country, name: @artist.name, url: @artist.url } }, as: :json
     assert_response :success
   end
 
   test "should destroy artist" do
+    login
     assert_difference("Artist.count", -1) do
       delete artist_url(@artist), as: :json
     end

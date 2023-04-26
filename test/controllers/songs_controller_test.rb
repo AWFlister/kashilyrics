@@ -14,6 +14,7 @@ class SongsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create song" do
+    login
     assert_difference("Song.count") do
       post songs_url, params: { artist_id: @artist.id,
                                 album_id: @album.id,
@@ -33,11 +34,13 @@ class SongsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update song" do
+    login
     patch song_url(@song), params: { song: { composer: @song.composer, duration: @song.duration, release_date: @song.release_date, title: @song.title } }, as: :json
     assert_response :success
   end
 
   test "should destroy song" do
+    login
     assert_difference("Song.count", -1) do
       delete song_url(@song), as: :json
     end
