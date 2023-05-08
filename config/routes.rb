@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :lyrics
   resources :bookmarks
-  resources :users
+  resources :users do
+    resources :bookmarks, only: %i[ index create ]
+  end
   resources :languages
   resources :songs
   resources :albums

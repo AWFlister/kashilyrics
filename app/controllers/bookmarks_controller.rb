@@ -4,7 +4,7 @@ class BookmarksController < ApplicationController
 
   # GET /bookmarks
   def index
-    @bookmarks = Bookmark.all
+    @bookmarks = params[:user_id].blank? ? Bookmark.all : User.find_by(id: params[:user_id]).bookmarks
 
     render json: @bookmarks
   end
@@ -17,8 +17,12 @@ class BookmarksController < ApplicationController
   # POST /bookmarks
   def create
     @bookmark = Bookmark.new(bookmark_params)
-
+    
     if @bookmark.save
+      if params[:user_id].present?
+        user = User.find_by id: params[:user_id]
+        user.bookmarks << @bookmark
+      end
       render json: @bookmark, status: :created, location: @bookmark
     else
       render json: @bookmark.errors, status: :unprocessable_entity
